@@ -59,7 +59,7 @@ com.github.nikolaybespalov.WindowsEventLogHandler.autoDeleteRegKey = false
 ```
 
 Or use the above-described configuration properties as system properties. For example:
-```
+```properties
 -Dcom.github.nikolaybespalov.WindowsEventLogHandler.sourceName="My Application"
 ```
 
