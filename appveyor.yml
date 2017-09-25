@@ -15,6 +15,7 @@ install:
   - cmd: SET M3_HOME=C:\maven\apache-maven-3.5.0
   - cmd: SET M3=%M3_HOME%\bin
   - cmd: SET PATH=%M3%;%JAVA_HOME%\bin;%PATH%
+  - cmd: SET jna.nosys=true
 build_script:
   - mvn clean package --batch-mode -DskipTests
 test_script:
