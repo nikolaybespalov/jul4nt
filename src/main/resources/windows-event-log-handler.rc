@@ -1,0 +1,44 @@
+;
+; Licensed to the Apache Software Foundation (ASF) under one
+; or more contributor license agreements.  See the NOTICE file
+; distributed with this work for additional information
+; regarding copyright ownership.  The ASF licenses this file
+; to you under the Apache License, Version 2.0 (the
+; "License"); you may not use this file except in compliance
+; with the License.  You may obtain a copy of the License at
+;
+;    http://www.apache.org/licenses/LICENSE-2.0
+;
+; Unless required by applicable law or agreed to in writing,
+; software distributed under the License is distributed on an
+; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+; KIND, either express or implied.  See the License for the
+; specific language governing permissions and limitations
+; under the License.
+;
+
+1 VERSIONINFO
+FILEVERSION     ${parsedVersion.majorVersion},${parsedVersion.minorVersion},${parsedVersion.incrementalVersion},${parsedVersion.buildNumber}
+PRODUCTVERSION  ${parsedVersion.majorVersion},${parsedVersion.minorVersion},${parsedVersion.incrementalVersion},${parsedVersion.buildNumber}
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "080904E4"
+    BEGIN
+      VALUE "CompanyName", "${organization.name}"
+      VALUE "FileDescription", "Event Log Message File"
+      VALUE "FileVersion", "${project.version}"
+      VALUE "InternalName", "${project.name}"
+      VALUE "LegalCopyright", "Copyright \251 ${inceptionYear}-${currentYear} ${organization.name}"
+      VALUE "OriginalFilename", "${project.name}.dll"
+      VALUE "ProductName", "${project.name}"
+      VALUE "ProductVersion", "${project.version}"
+      VALUE "Comments", "${project.description}"
+    END
+  END
+
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0, 0
+  END
+END

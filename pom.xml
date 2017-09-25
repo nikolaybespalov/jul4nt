@@ -1,0 +1,186 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.nikolaybespalov</groupId>
+    <artifactId>windows-event-log-handler</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Windows Event Log Handler</name>
+    <description>This Java Logging Handler publishes log records to Windows Event Log</description>
+
+    <organization>
+        <name>Nikolay Bespalov</name>
+        <url>https://github.com/nikolaybespalov</url>
+    </organization>
+
+    <inceptionYear>2017</inceptionYear>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.12</version>
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <id>parse-version</id>
+                        <goals>
+                            <goal>parse-version</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>timestamp-property</id>
+                        <goals>
+                            <goal>timestamp-property</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <name>currentYear</name>
+                            <pattern>yyyy</pattern>
+                            <locale>en,US</locale>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>generate-dll</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <mkdir dir="${project.build.outputDirectory}\win32-x86"/>
+                                <mkdir dir="${project.build.outputDirectory}\win32-x86-64"/>
+                                <exec executable="cmd"
+                                      dir="${project.build.outputDirectory}">
+                                    <arg value="/K"/>
+                                    <!-- Someday I'll find a more elegant way to launch Visual Studio Command Prompt -->
+                                    <arg value="call &quot;C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/Common7/Tools/VsDevCmd.bat&quot; &amp; mc -h &quot;${project.build.outputDirectory}&quot; -r &quot;${project.build.outputDirectory}&quot; &quot;${project.build.outputDirectory}\ParameterMessageFile.mc&quot; &amp; rc &quot;${project.build.outputDirectory}\${project.artifactId}.rc&quot; &amp; link -dll -noentry -out:&quot;${project.build.outputDirectory}\win32-x86\${project.artifactId}.dll&quot; &quot;${project.build.outputDirectory}\${project.artifactId}.res&quot; /MACHINE:x86 &amp; link -dll -noentry -out:&quot;${project.build.outputDirectory}\win32-x86-64\${project.artifactId}.dll&quot; &quot;${project.build.outputDirectory}\${project.artifactId}.res&quot; /MACHINE:x64"/>
+                                </exec>
+                                <!-- Below are the main build steps of the Event Log Message File -->
+                                <!--<exec executable="mc"-->
+                                      <!--dir="${project.build.directory}\classes"-->
+                                      <!--failonerror="true"-->
+                                      <!--failifexecutionfails="true">-->
+                                    <!--<arg value="-h"/>-->
+                                    <!--<arg value="${project.build.directory}\classes"/>-->
+                                    <!--<arg value="-r"/>-->
+                                    <!--<arg value="${project.build.directory}\classes"/>-->
+                                    <!--<arg value="ParameterMessageFile.mc"/>-->
+                                <!--</exec>-->
+                                <!--<exec executable="rc"-->
+                                      <!--dir="${project.build.directory}\classes"-->
+                                      <!--failonerror="true"-->
+                                      <!--failifexecutionfails="true">-->
+                                    <!--<arg value="/r"/>-->
+                                    <!--<arg value="${project.artifactId}.rc"/>-->
+                                <!--</exec>-->
+                                <!--<mkdir dir="${project.build.directory}\classes\win32-x86"/>-->
+                                <!--<exec executable="link"-->
+                                      <!--dir="${project.build.directory}/classes"-->
+                                      <!--failonerror="true"-->
+                                      <!--failifexecutionfails="true">-->
+                                    <!--<arg value="-dll"/>-->
+                                    <!--<arg value="-noentry"/>-->
+                                    <!--<arg value="-out:win32-x86\${project.artifactId}.dll"/>-->
+                                    <!--<arg value="${project.artifactId}.res"/>-->
+                                    <!--<arg value="/MACHINE:x86"/>-->
+                                <!--</exec>-->
+                                <!--<mkdir dir="${project.build.directory}\classes\win32-x86-64"/>-->
+                                <!--<exec executable="link"-->
+                                      <!--dir="${project.build.directory}\classes"-->
+                                      <!--failonerror="true"-->
+                                      <!--failifexecutionfails="true">-->
+                                    <!--<arg value="-dll"/>-->
+                                    <!--<arg value="-noentry"/>-->
+                                    <!--<arg value="-out:win32-x86-64\${project.artifactId}.dll"/>-->
+                                    <!--<arg value="${project.artifactId}.res"/>-->
+                                    <!--<arg value="/MACHINE:x64"/>-->
+                                <!--</exec>-->
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20.1</version>
+                <configuration>
+                    <systemProperties>
+                        <property>
+                            <name>project.build.directory</name>
+                            <value>${project.build.directory}</value>
+                        </property>
+                        <property>
+                            <name>java.util.logging.config.file</name>
+                            <value>${project.build.testOutputDirectory}\logging.properties</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <excludes>
+                        <exclude>ParameterMessageFile.mc</exclude>
+                        <exclude>${project.artifactId}.rc</exclude>
+                        <exclude>${project.artifactId}.res</exclude>
+                        <exclude>${project.artifactId}.h</exclude>
+                        <exclude>MSG00000.bin</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>4.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna-platform</artifactId>
+            <version>4.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+</project>
