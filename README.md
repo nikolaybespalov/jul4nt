@@ -1,4 +1,4 @@
-# WindowsEventLogHandler
+# Windows Event Log Handler
 [Java Logging] [Handler] which publishes log records to [Windows Event Log]
 
 ![Windows Event Viewer](https://upload.wikimedia.org/wikipedia/en/f/f2/Windows_XP_Event_Viewer.png)
