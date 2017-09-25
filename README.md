@@ -45,9 +45,6 @@ com.github.nikolaybespalov.WindowsEventLogHandler.formatter = java.util.logging.
 # The name of the character set encoding to use (defaults to the default platform encoding)
 com.github.nikolaybespalov.WindowsEventLogHandler.encoding = UTF-8
 
-# Allows to use of buffered output (defaults to the default false)
-com.github.nikolaybespalov.WindowsEventLogHandler.buffered = false
-
 # The name of the Source Name to use (defaults to EventLogHandler)
 com.github.nikolaybespalov.WindowsEventLogHandler.sourceName = My Application
 
