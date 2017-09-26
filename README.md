@@ -3,7 +3,8 @@
 
 ![Windows Event Viewer](https://upload.wikimedia.org/wikipedia/en/f/f2/Windows_XP_Event_Viewer.png)
 
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/nikolaybespalov/windows-event-log-handler?svg=true)](https://ci.appveyor.com/project/nikolaybespalov/windows-event-log-handler)
+[![AppVeyor Badge](https://ci.appveyor.com/api/projects/status/github/nikolaybespalov/windows-event-log-handler?svg=true)](https://ci.appveyor.com/project/nikolaybespalov/windows-event-log-handler)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a4bb3b313a14dcd931c9b7532252baa)](https://www.codacy.com/app/nikolaybespalov/windows-event-log-handler)
 
 ## How to use?
 
