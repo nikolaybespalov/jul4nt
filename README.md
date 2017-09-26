@@ -13,8 +13,8 @@ The library is available on Maven central. You can start to use the library by a
     <!-- ... -->
     <dependency>
       <groupId>com.github.nikolaybespalov</groupId>
-      <artifactId>WindowsEventLogHandler</artifactId>
-      <version>0.1.0-SNAPSHOT</version>
+      <artifactId>windows-event-log-handler</artifactId>
+      <version>${windows-event-log-handler.version}</version>
       <scope>runtime</scope>
     </dependency>
     <!-- ... -->
@@ -25,7 +25,7 @@ Or use it in `build.gradle`:
 ```java
   dependencies {
     // ...
-    runtime("com.github.nikolaybespalov:WindowsEventLogHandler:0.1.0-SNAPSHOT")
+    runtime("com.github.nikolaybespalov:WindowsEventLogHandler:{windows-event-log-handler.version}")
     // ...
   }
 ```
