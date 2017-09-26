@@ -55,6 +55,7 @@
 
     <properties>
         <project.author.name>Nikolay Bespalov</project.author.name>
+        <project.scm.id>github</project.scm.id>
         <project.author.email>nikolaybespalov@gmail.com</project.author.email>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
