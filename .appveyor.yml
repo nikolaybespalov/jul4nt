@@ -13,7 +13,7 @@ install:
         [System.IO.Compression.ZipFile]::ExtractToDirectory("C:\maven-bin.zip", "C:\maven")
       }
       Copy-Item .appveyor\settings.xml C:\Users\appveyor\.m2\settings.xml
-      gpg --import .appveyor\sec.asc
+      gpg --passphrase %GPG_PASSPHRASE% --import .appveyor\sec.asc
   - cmd: SET M3_HOME=C:\maven\apache-maven-3.5.0
   - cmd: SET M3=%M3_HOME%\bin
   - cmd: SET PATH=%M3%;%JAVA_HOME%\bin;%PATH%
@@ -26,6 +26,3 @@ deploy_script:
 cache:
   - C:\maven\
   - C:\Users\appveyor\.m2
-artifacts:
- - path: '**\target\*.jar;**\target\*.asc;**\target\pom.xml'
-   name: 'NAME'
