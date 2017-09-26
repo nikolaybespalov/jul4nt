@@ -27,6 +27,5 @@ cache:
   - C:\maven\
   - C:\Users\appveyor\.m2
 artifacts:
- - path: '**\target\*.jar'
- - path: '**\target\*.asc'
- - path: '**\target\pom.xml'
+ - path: '**\target\*.jar' '**\target\*.asc' '**\target\pom.xml'
+   name: 'NAME'
