@@ -29,6 +29,8 @@
 
     <scm>
         <url>https://github.com/nikolaybespalov/windows-event-log-handler</url>
+        <connection>scm:git:git://github.com/nikolaybespalov/windows-event-log-handler.git</connection>
+        <developerConnection>scm:git:git@github.com:nikolaybespalov/windows-event-log-handler.git</developerConnection>
     </scm>
 
     <issueManagement>
