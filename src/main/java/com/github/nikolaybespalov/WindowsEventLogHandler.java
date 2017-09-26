@@ -36,7 +36,6 @@ import java.io.ObjectOutputStream;
 import java.text.MessageFormat;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.*;
 import java.util.stream.Collectors;
@@ -105,16 +104,16 @@ public class WindowsEventLogHandler extends Handler implements AutoCloseable {
             .collect(Collectors.toMap(SimpleEntry::getKey, SimpleEntry::getValue)));
 
     @SuppressWarnings("Duplicates")
-    private static final Map<Level, Integer> LOG_LEVEL_TO_MESSAGE_ID = new HashMap<Level, Integer>() {{
-        put(Level.SEVERE, MESSAGE_ID_ERROR);
-        put(Level.WARNING, MESSAGE_ID_WARNING);
-        put(Level.INFO, MESSAGE_ID_INFO);
-        put(Level.CONFIG, MESSAGE_ID_INFO);
-        put(Level.FINE, MESSAGE_ID_SUCCESS);
-        put(Level.FINER, MESSAGE_ID_SUCCESS);
-        put(Level.FINEST, MESSAGE_ID_SUCCESS);
-        put(Level.ALL, MESSAGE_ID_SUCCESS);
-    }};
+    private static final Map<Level, Integer> LOG_LEVEL_TO_MESSAGE_ID = Collections.unmodifiableMap(Stream.of(
+            new SimpleEntry<>(Level.SEVERE, MESSAGE_ID_ERROR),
+            new SimpleEntry<>(Level.WARNING, MESSAGE_ID_WARNING),
+            new SimpleEntry<>(Level.INFO, MESSAGE_ID_INFO),
+            new SimpleEntry<>(Level.CONFIG, MESSAGE_ID_INFO),
+            new SimpleEntry<>(Level.FINE, MESSAGE_ID_SUCCESS),
+            new SimpleEntry<>(Level.FINER, MESSAGE_ID_SUCCESS),
+            new SimpleEntry<>(Level.FINEST, MESSAGE_ID_SUCCESS),
+            new SimpleEntry<>(Level.ALL, MESSAGE_ID_SUCCESS))
+            .collect(Collectors.toMap(SimpleEntry::getKey, SimpleEntry::getValue)));
 
     private static File messageFile;
     private static boolean autoDeleteRegKey;
