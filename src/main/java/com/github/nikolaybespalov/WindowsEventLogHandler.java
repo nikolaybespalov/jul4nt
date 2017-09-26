@@ -34,9 +34,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.text.MessageFormat;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.sun.jna.platform.win32.WinNT.*;
 import static com.sun.jna.platform.win32.WinReg.HKEY_LOCAL_MACHINE;
@@ -89,16 +93,16 @@ public class WindowsEventLogHandler extends Handler implements AutoCloseable {
     private static final int MESSAGE_ID_ERROR = 0xC0001004;
 
     @SuppressWarnings("Duplicates")
-    private static final Map<Level, Integer> LOG_LEVEL_TO_EVENT_TYPE = new HashMap<Level, Integer>() {{
-        put(Level.SEVERE, EVENTLOG_ERROR_TYPE);
-        put(Level.WARNING, EVENTLOG_WARNING_TYPE);
-        put(Level.INFO, EVENTLOG_INFORMATION_TYPE);
-        put(Level.CONFIG, EVENTLOG_INFORMATION_TYPE);
-        put(Level.FINE, EVENTLOG_INFORMATION_TYPE);
-        put(Level.FINER, EVENTLOG_INFORMATION_TYPE);
-        put(Level.FINEST, EVENTLOG_INFORMATION_TYPE);
-        put(Level.ALL, EVENTLOG_INFORMATION_TYPE);
-    }};
+    private static final Map<Level, Integer> LOG_LEVEL_TO_EVENT_TYPE = Collections.unmodifiableMap(Stream.of(
+            new SimpleEntry<>(Level.SEVERE, EVENTLOG_ERROR_TYPE),
+            new SimpleEntry<>(Level.WARNING, EVENTLOG_WARNING_TYPE),
+            new SimpleEntry<>(Level.INFO, EVENTLOG_INFORMATION_TYPE),
+            new SimpleEntry<>(Level.CONFIG, EVENTLOG_INFORMATION_TYPE),
+            new SimpleEntry<>(Level.FINE, EVENTLOG_INFORMATION_TYPE),
+            new SimpleEntry<>(Level.FINER, EVENTLOG_INFORMATION_TYPE),
+            new SimpleEntry<>(Level.FINEST, EVENTLOG_INFORMATION_TYPE),
+            new SimpleEntry<>(Level.ALL, EVENTLOG_INFORMATION_TYPE))
+            .collect(Collectors.toMap(SimpleEntry::getKey, SimpleEntry::getValue)));
 
     @SuppressWarnings("Duplicates")
     private static final Map<Level, Integer> LOG_LEVEL_TO_MESSAGE_ID = new HashMap<Level, Integer>() {{
