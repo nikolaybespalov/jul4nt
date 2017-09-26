@@ -9,15 +9,51 @@
 
     <name>Windows Event Log Handler</name>
     <description>This Java Logging Handler publishes log records to Windows Event Log</description>
-
-    <organization>
-        <name>Nikolay Bespalov</name>
-        <url>https://github.com/nikolaybespalov</url>
-    </organization>
-
+    <url>https://github.com/nikolaybespalov/windows-event-log-handler</url>
     <inceptionYear>2017</inceptionYear>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>${project.author.name}</name>
+            <email>${project.author.email}</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/nikolaybespalov/windows-event-log-handler</url>
+    </scm>
+
+    <issueManagement>
+        <url>https://github.com/nikolaybespalov/windows-event-log-handler/issues</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>AppVeyor</system>
+        <url>https://ci.appveyor.com/project/nikolaybespalov/windows-event-log-handler</url>
+    </ciManagement>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
     <properties>
+        <project.author.name>Nikolay Bespalov</project.author.name>
+        <project.author.email>nikolaybespalov@gmail.com</project.author.email>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -154,12 +190,39 @@
                 <configuration>
                     <excludes>
                         <exclude>ParameterMessageFile.mc</exclude>
+                        <exclude>ParameterMessageFile.h</exclude>
+                        <exclude>ParameterMessageFile.rc</exclude>
                         <exclude>${project.artifactId}.rc</exclude>
                         <exclude>${project.artifactId}.res</exclude>
-                        <exclude>${project.artifactId}.h</exclude>
                         <exclude>MSG00000.bin</exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

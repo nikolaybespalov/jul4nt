@@ -25,11 +25,11 @@ BEGIN
   BEGIN
     BLOCK "080904E4"
     BEGIN
-      VALUE "CompanyName", "${organization.name}"
+      VALUE "CompanyName", "${project.author.name}"
       VALUE "FileDescription", "Event Log Message File"
       VALUE "FileVersion", "${project.version}"
       VALUE "InternalName", "${project.name}"
-      VALUE "LegalCopyright", "Copyright \251 ${inceptionYear}-${currentYear} ${organization.name}"
+      VALUE "LegalCopyright", "Copyright \251 ${inceptionYear}-${currentYear} ${project.author.name}"
       VALUE "OriginalFilename", "${project.name}.dll"
       VALUE "ProductName", "${project.name}"
       VALUE "ProductVersion", "${project.version}"
