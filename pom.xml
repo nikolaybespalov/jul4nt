@@ -29,8 +29,7 @@
 
     <scm>
         <url>https://github.com/nikolaybespalov/windows-event-log-handler</url>
-        <connection>scm:git:git://github.com/nikolaybespalov/windows-event-log-handler.git</connection>
-        <developerConnection>scm:git:https@github.com:nikolaybespalov/windows-event-log-handler.git</developerConnection>
+        <connection>scm:git:https://github.com/nikolaybespalov/windows-event-log-handler.git</connection>
     </scm>
 
     <issueManagement>
@@ -126,43 +125,43 @@
                                 </exec>
                                 <!-- Below are the main build steps of the Event Log Message File -->
                                 <!--<exec executable="mc"-->
-                                      <!--dir="${project.build.directory}\classes"-->
-                                      <!--failonerror="true"-->
-                                      <!--failifexecutionfails="true">-->
-                                    <!--<arg value="-h"/>-->
-                                    <!--<arg value="${project.build.directory}\classes"/>-->
-                                    <!--<arg value="-r"/>-->
-                                    <!--<arg value="${project.build.directory}\classes"/>-->
-                                    <!--<arg value="ParameterMessageFile.mc"/>-->
+                                <!--dir="${project.build.directory}\classes"-->
+                                <!--failonerror="true"-->
+                                <!--failifexecutionfails="true">-->
+                                <!--<arg value="-h"/>-->
+                                <!--<arg value="${project.build.directory}\classes"/>-->
+                                <!--<arg value="-r"/>-->
+                                <!--<arg value="${project.build.directory}\classes"/>-->
+                                <!--<arg value="ParameterMessageFile.mc"/>-->
                                 <!--</exec>-->
                                 <!--<exec executable="rc"-->
-                                      <!--dir="${project.build.directory}\classes"-->
-                                      <!--failonerror="true"-->
-                                      <!--failifexecutionfails="true">-->
-                                    <!--<arg value="/r"/>-->
-                                    <!--<arg value="${project.artifactId}.rc"/>-->
+                                <!--dir="${project.build.directory}\classes"-->
+                                <!--failonerror="true"-->
+                                <!--failifexecutionfails="true">-->
+                                <!--<arg value="/r"/>-->
+                                <!--<arg value="${project.artifactId}.rc"/>-->
                                 <!--</exec>-->
                                 <!--<mkdir dir="${project.build.directory}\classes\win32-x86"/>-->
                                 <!--<exec executable="link"-->
-                                      <!--dir="${project.build.directory}/classes"-->
-                                      <!--failonerror="true"-->
-                                      <!--failifexecutionfails="true">-->
-                                    <!--<arg value="-dll"/>-->
-                                    <!--<arg value="-noentry"/>-->
-                                    <!--<arg value="-out:win32-x86\${project.artifactId}.dll"/>-->
-                                    <!--<arg value="${project.artifactId}.res"/>-->
-                                    <!--<arg value="/MACHINE:x86"/>-->
+                                <!--dir="${project.build.directory}/classes"-->
+                                <!--failonerror="true"-->
+                                <!--failifexecutionfails="true">-->
+                                <!--<arg value="-dll"/>-->
+                                <!--<arg value="-noentry"/>-->
+                                <!--<arg value="-out:win32-x86\${project.artifactId}.dll"/>-->
+                                <!--<arg value="${project.artifactId}.res"/>-->
+                                <!--<arg value="/MACHINE:x86"/>-->
                                 <!--</exec>-->
                                 <!--<mkdir dir="${project.build.directory}\classes\win32-x86-64"/>-->
                                 <!--<exec executable="link"-->
-                                      <!--dir="${project.build.directory}\classes"-->
-                                      <!--failonerror="true"-->
-                                      <!--failifexecutionfails="true">-->
-                                    <!--<arg value="-dll"/>-->
-                                    <!--<arg value="-noentry"/>-->
-                                    <!--<arg value="-out:win32-x86-64\${project.artifactId}.dll"/>-->
-                                    <!--<arg value="${project.artifactId}.res"/>-->
-                                    <!--<arg value="/MACHINE:x64"/>-->
+                                <!--dir="${project.build.directory}\classes"-->
+                                <!--failonerror="true"-->
+                                <!--failifexecutionfails="true">-->
+                                <!--<arg value="-dll"/>-->
+                                <!--<arg value="-noentry"/>-->
+                                <!--<arg value="-out:win32-x86-64\${project.artifactId}.dll"/>-->
+                                <!--<arg value="${project.artifactId}.res"/>-->
+                                <!--<arg value="/MACHINE:x64"/>-->
                                 <!--</exec>-->
                             </target>
                         </configuration>
