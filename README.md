@@ -3,6 +3,8 @@
 
 ![Windows Event Viewer](https://upload.wikimedia.org/wikipedia/en/f/f2/Windows_XP_Event_Viewer.png)
 
+![Build Status](https://ci.appveyor.com/api/projects/status/github/nikolaybespalov/windows-event-log-handler?svg=true)
+
 ## How to use?
 
 The library is available on Maven central. You can start to use the library by adding it to `dependencies` section of `pom.xml`:
