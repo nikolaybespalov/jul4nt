@@ -3,7 +3,7 @@
 
 ![Windows Event Viewer](https://upload.wikimedia.org/wikipedia/en/f/f2/Windows_XP_Event_Viewer.png)
 
-![Build Status](https://ci.appveyor.com/api/projects/status/github/nikolaybespalov/windows-event-log-handler?svg=true)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/nikolaybespalov/windows-event-log-handler?svg=true)](https://ci.appveyor.com/project/nikolaybespalov/windows-event-log-handler)
 
 ## How to use?
 
