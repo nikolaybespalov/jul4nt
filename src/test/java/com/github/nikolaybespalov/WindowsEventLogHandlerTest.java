@@ -23,7 +23,6 @@ import com.sun.jna.platform.win32.Advapi32;
 import com.sun.jna.platform.win32.Advapi32Util;
 import com.sun.jna.platform.win32.Advapi32Util.EventLogIterator;
 import com.sun.jna.platform.win32.Advapi32Util.EventLogRecord;
-import com.sun.jna.platform.win32.WinNT;
 import com.sun.jna.ptr.IntByReference;
 import org.junit.After;
 import org.junit.Before;
@@ -56,7 +55,7 @@ public class WindowsEventLogHandlerTest {
     private static final String WARNING_MESSAGE = "warning-message-" + UUID.randomUUID();
     private static final String SEVERE_MESSAGE = "severe-message-" + UUID.randomUUID();
     private static Logger log = Logger.getLogger(WindowsEventLogHandler.class.getName(), "messages");
-    private WinNT.HANDLE hEventLog;
+    private HANDLE hEventLog;
 
     @Before
     public void setUp() throws Exception {
