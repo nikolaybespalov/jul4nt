@@ -7,7 +7,7 @@
     <packaging>jar</packaging>
 
     <name>Windows Event Log Handler</name>
-    <description>This Java Logging Handler publishes log records to Windows Event Log</description>
+    <description>Java Logging Handler publishes log records to Windows Event Log</description>
     <url>https://github.com/nikolaybespalov/windows-event-log-handler</url>
     <inceptionYear>2017</inceptionYear>
 
