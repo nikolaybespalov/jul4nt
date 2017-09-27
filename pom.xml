@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.nikolaybespalov</groupId>
@@ -29,8 +30,8 @@
     <scm>
         <url>https://github.com/nikolaybespalov/windows-event-log-handler</url>
         <connection>scm:git:https://github.com/nikolaybespalov/windows-event-log-handler.git</connection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <issueManagement>
         <url>https://github.com/nikolaybespalov/windows-event-log-handler/issues</url>
@@ -59,6 +60,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <skipTests>false</skipTests>
     </properties>
 
     <build>
@@ -115,12 +117,12 @@
                         </goals>
                         <configuration>
                             <target>
-                                <mkdir dir="${project.build.outputDirectory}\win32-x86" />
-                                <mkdir dir="${project.build.outputDirectory}\win32-x86-64" />
+                                <mkdir dir="${project.build.outputDirectory}\win32-x86"/>
+                                <mkdir dir="${project.build.outputDirectory}\win32-x86-64"/>
                                 <exec executable="cmd" dir="${project.build.outputDirectory}">
-                                    <arg value="/K" />
+                                    <arg value="/K"/>
                                     <!-- Someday I'll find a more elegant way to launch Visual Studio Command Prompt -->
-                                    <arg value="call &quot;C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/Common7/Tools/VsDevCmd.bat&quot; &amp; mc -h &quot;${project.build.outputDirectory}&quot; -r &quot;${project.build.outputDirectory}&quot; &quot;${project.build.outputDirectory}\ParameterMessageFile.mc&quot; &amp; rc &quot;${project.build.outputDirectory}\${project.artifactId}.rc&quot; &amp; link -dll -noentry -out:&quot;${project.build.outputDirectory}\win32-x86\${project.artifactId}.dll&quot; &quot;${project.build.outputDirectory}\${project.artifactId}.res&quot; /MACHINE:x86 &amp; link -dll -noentry -out:&quot;${project.build.outputDirectory}\win32-x86-64\${project.artifactId}.dll&quot; &quot;${project.build.outputDirectory}\${project.artifactId}.res&quot; /MACHINE:x64" />
+                                    <arg value="call &quot;C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/Common7/Tools/VsDevCmd.bat&quot; &amp; mc -h &quot;${project.build.outputDirectory}&quot; -r &quot;${project.build.outputDirectory}&quot; &quot;${project.build.outputDirectory}\ParameterMessageFile.mc&quot; &amp; rc &quot;${project.build.outputDirectory}\${project.artifactId}.rc&quot; &amp; link -dll -noentry -out:&quot;${project.build.outputDirectory}\win32-x86\${project.artifactId}.dll&quot; &quot;${project.build.outputDirectory}\${project.artifactId}.res&quot; /MACHINE:x86 &amp; link -dll -noentry -out:&quot;${project.build.outputDirectory}\win32-x86-64\${project.artifactId}.dll&quot; &quot;${project.build.outputDirectory}\${project.artifactId}.res&quot; /MACHINE:x64"/>
                                 </exec>
                                 <!-- Below are the main build steps of the Event Log Message File -->
                                 <!--<exec executable="mc"-->
@@ -172,17 +174,39 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.20.1</version>
                 <configuration>
+                    <!-- Sets the VM argument line used when unit tests are run. -->
+                    <!--<argLine>${surefireArgLine}</argLine>-->
                     <systemProperties>
-                        <property>
-                            <name>project.build.directory</name>
-                            <value>${project.build.directory}</value>
-                        </property>
                         <property>
                             <name>java.util.logging.config.file</name>
                             <value>${project.build.testOutputDirectory}\logging.properties</value>
                         </property>
                     </systemProperties>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.9</version>
+                <configuration>
+                    <skip>${skipTests}</skip>
+                    <outputDirectory>${project.build.directory}/coverage-reports/jacoco</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>pre-unit-test</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

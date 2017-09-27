@@ -42,7 +42,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class WindowsEventLogHandlerTest {
-    private static final String projectBuildDir = System.getProperty("project.build.directory", "target");
     private static final String SOURCE_NAME = "My Application";
     private static final String CONFIG_MESSAGE = "config-message-" + UUID.randomUUID();
     private static final String ENTERING_MESSAGE = "ENTRY";
@@ -60,12 +59,12 @@ public class WindowsEventLogHandlerTest {
     @Before
     public void setUp() throws Exception {
         hEventLog = Advapi32.INSTANCE.OpenEventLog(null, SOURCE_NAME);
-        Advapi32.INSTANCE.ClearEventLog(hEventLog, projectBuildDir + "\\" + UUID.randomUUID() + ".bin");
+        Advapi32.INSTANCE.ClearEventLog(hEventLog, null);
     }
 
     @After
     public void tearDown() throws Exception {
-        Advapi32.INSTANCE.ClearEventLog(hEventLog, projectBuildDir + "\\" + UUID.randomUUID() + ".bin");
+        Advapi32.INSTANCE.ClearEventLog(hEventLog, null);
         Advapi32.INSTANCE.CloseEventLog(hEventLog);
     }
 
