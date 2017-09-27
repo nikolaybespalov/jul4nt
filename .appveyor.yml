@@ -17,8 +17,10 @@ install:
   - cmd: SET M3=%M3_HOME%\bin
   - cmd: SET PATH=%M3%;%JAVA_HOME%\bin;%PATH%
   - ps: |
-      New-Item C:\Users\appveyor\.m2 -Type Directory
-      Copy-Item .appveyor\settings.xml C:\Users\appveyor\.m2\settings.xml -Force
+      if(!(Test-Path -Path C:\Users\appveyor\.m2)){
+        New-Item C:\Users\appveyor\.m2 -Type Directory
+      }
+      Copy-Item .appveyor\settings.xml C:\Users\appveyor\.m2\settings.xml
   - cmd: gpg --import .appveyor\sec.asc
 build_script:
   - mvn clean package --batch-mode -DskipTests
