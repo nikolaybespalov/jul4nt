@@ -3,7 +3,7 @@
 
     <groupId>com.github.nikolaybespalov</groupId>
     <artifactId>jul4nt</artifactId>
-    <version>0.1.5-SNAPSHOT</version>
+    <version>0.1.5</version>
     <packaging>jar</packaging>
 
     <name>Windows Event Log Handler</name>
@@ -29,7 +29,7 @@
     <scm>
         <url>https://github.com/nikolaybespalov/jul4nt</url>
         <connection>scm:git:https://github.com/nikolaybespalov/jul4nt.git</connection>
-        <tag>HEAD</tag>
+        <tag>0.1.5</tag>
     </scm>
 
     <issueManagement>
