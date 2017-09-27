@@ -4,10 +4,10 @@
 
 ![Windows Event Viewer](https://upload.wikimedia.org/wikipedia/en/f/f2/Windows_XP_Event_Viewer.png)
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/windows-event-log-handler/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/windows-event-log-handler)
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/nikolaybespalov/windows-event-log-handler?svg=true)](https://ci.appveyor.com/project/nikolaybespalov/windows-event-log-handler)
-[![Codacy](https://api.codacy.com/project/badge/Grade/5a4bb3b313a14dcd931c9b7532252baa)](https://www.codacy.com/app/nikolaybespalov/windows-event-log-handler)
-[![Codacy coverage](https://img.shields.io/codacy/coverage/85097ba49291416b9a0da2881c242b9e.svg)](https://www.codacy.com/app/nikolaybespalov/windows-event-log-handler)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/jul4nt/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/jul4nt)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/nikolaybespalov/jul4nt?svg=true)](https://ci.appveyor.com/project/nikolaybespalov/jul4nt)
+[![Codacy](https://api.codacy.com/project/badge/Grade/5a4bb3b313a14dcd931c9b7532252baa)](https://www.codacy.com/app/nikolaybespalov/jul4nt)
+[![Codacy coverage](https://img.shields.io/codacy/coverage/85097ba49291416b9a0da2881c242b9e.svg)](https://www.codacy.com/app/nikolaybespalov/jul4nt)
 
 
 ## How to use?
@@ -30,7 +30,7 @@ Or use it in `build.gradle`:
 ```java
   dependencies {
     // ...
-    runtime("com.github.nikolaybespalov:jul4nt:{windows-event-log-handler.version}")
+    runtime("com.github.nikolaybespalov:jul4nt:{jul4nt.version}")
     // ...
   }
 ```

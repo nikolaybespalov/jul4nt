@@ -8,7 +8,7 @@
 
     <name>Windows Event Log Handler</name>
     <description>Java Logging Handler publishes log records to Windows Event Log</description>
-    <url>https://github.com/nikolaybespalov/windows-event-log-handler</url>
+    <url>https://github.com/nikolaybespalov/jul4nt</url>
     <inceptionYear>2017</inceptionYear>
 
     <licenses>
@@ -27,18 +27,18 @@
     </developers>
 
     <scm>
-        <url>https://github.com/nikolaybespalov/windows-event-log-handler</url>
-        <connection>scm:git:https://github.com/nikolaybespalov/windows-event-log-handler.git</connection>
+        <url>https://github.com/nikolaybespalov/jul4nt</url>
+        <connection>scm:git:https://github.com/nikolaybespalov/jul4nt.git</connection>
         <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
-        <url>https://github.com/nikolaybespalov/windows-event-log-handler/issues</url>
+        <url>https://github.com/nikolaybespalov/jul4nt/issues</url>
     </issueManagement>
 
     <ciManagement>
         <system>AppVeyor</system>
-        <url>https://ci.appveyor.com/project/nikolaybespalov/windows-event-log-handler</url>
+        <url>https://ci.appveyor.com/project/nikolaybespalov/jul4nt</url>
     </ciManagement>
 
     <distributionManagement>
