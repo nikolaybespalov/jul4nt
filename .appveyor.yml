@@ -17,6 +17,7 @@ install:
   - cmd: SET M3=%M3_HOME%\bin
   - cmd: SET PATH=%M3%;%JAVA_HOME%\bin;%PATH%
   - ps: |
+      New-Item C:\Users\appveyor\.m2 -Type Directory
       Copy-Item .appveyor\settings.xml C:\Users\appveyor\.m2\settings.xml -Force
   - cmd: gpg --import .appveyor\sec.asc
 build_script:
