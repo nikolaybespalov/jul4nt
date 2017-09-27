@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.nikolaybespalov</groupId>
     <artifactId>windows-event-log-handler</artifactId>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.5-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Windows Event Log Handler</name>
@@ -60,7 +59,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <skipTests>false</skipTests>
+        <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
     </properties>
 
     <build>
@@ -117,12 +116,12 @@
                         </goals>
                         <configuration>
                             <target>
-                                <mkdir dir="${project.build.outputDirectory}\win32-x86"/>
-                                <mkdir dir="${project.build.outputDirectory}\win32-x86-64"/>
+                                <mkdir dir="${project.build.outputDirectory}\win32-x86" />
+                                <mkdir dir="${project.build.outputDirectory}\win32-x86-64" />
                                 <exec executable="cmd" dir="${project.build.outputDirectory}">
-                                    <arg value="/K"/>
+                                    <arg value="/K" />
                                     <!-- Someday I'll find a more elegant way to launch Visual Studio Command Prompt -->
-                                    <arg value="call &quot;C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/Common7/Tools/VsDevCmd.bat&quot; &amp; mc -h &quot;${project.build.outputDirectory}&quot; -r &quot;${project.build.outputDirectory}&quot; &quot;${project.build.outputDirectory}\ParameterMessageFile.mc&quot; &amp; rc &quot;${project.build.outputDirectory}\${project.artifactId}.rc&quot; &amp; link -dll -noentry -out:&quot;${project.build.outputDirectory}\win32-x86\${project.artifactId}.dll&quot; &quot;${project.build.outputDirectory}\${project.artifactId}.res&quot; /MACHINE:x86 &amp; link -dll -noentry -out:&quot;${project.build.outputDirectory}\win32-x86-64\${project.artifactId}.dll&quot; &quot;${project.build.outputDirectory}\${project.artifactId}.res&quot; /MACHINE:x64"/>
+                                    <arg value="call &quot;C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/Common7/Tools/VsDevCmd.bat&quot; &amp; mc -h &quot;${project.build.outputDirectory}&quot; -r &quot;${project.build.outputDirectory}&quot; &quot;${project.build.outputDirectory}\ParameterMessageFile.mc&quot; &amp; rc &quot;${project.build.outputDirectory}\${project.artifactId}.rc&quot; &amp; link -dll -noentry -out:&quot;${project.build.outputDirectory}\win32-x86\${project.artifactId}.dll&quot; &quot;${project.build.outputDirectory}\${project.artifactId}.res&quot; /MACHINE:x86 &amp; link -dll -noentry -out:&quot;${project.build.outputDirectory}\win32-x86-64\${project.artifactId}.dll&quot; &quot;${project.build.outputDirectory}\${project.artifactId}.res&quot; /MACHINE:x64" />
                                 </exec>
                                 <!-- Below are the main build steps of the Event Log Message File -->
                                 <!--<exec executable="mc"-->
@@ -174,8 +173,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.20.1</version>
                 <configuration>
-                    <!-- Sets the VM argument line used when unit tests are run. -->
-                    <!--<argLine>${surefireArgLine}</argLine>-->
                     <systemProperties>
                         <property>
                             <name>java.util.logging.config.file</name>
@@ -268,6 +265,35 @@
                         <version>1.9.5</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <configuration>
+                    <passphrase>${env.GPG_PASSPHRASE}</passphrase>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <skipNexusStagingDeployMojo>${skipNexusStagingDeployMojo}</skipNexusStagingDeployMojo>
+                </configuration>
             </plugin>
         </plugins>
     </build>
