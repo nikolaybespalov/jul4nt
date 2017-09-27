@@ -22,6 +22,7 @@ build_script:
   - mvn clean package --batch-mode -DskipTests
 test_script:
   - mvn clean test --batch-mode -Djna.nosys=true
+  - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=coverage-reports/jacoco/jacoco.xml -DprojectToken=85097ba49291416b9a0da2881c242b9e -DapiToken=85097ba49291416b9a0da2881c242b9e
   - ps: |
         $url = "https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)"
         Get-ChildItem "target/surefire-reports/" -Filter *.xml | Foreach-Object{
