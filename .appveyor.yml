@@ -23,6 +23,7 @@ install:
       Copy-Item .appveyor\settings.xml C:\Users\appveyor\.m2\settings.xml
   - cmd: gpg --version
   - cmd: echo %GPG_PASSPHRASE%
+  - ps: echo "$env.GPG_PASSPHRASE"
   - ps: gpg --cipher-algo AES256 -d --passphrase "$env.GPG_PASSPHRASE" -v --batch --yes -o .appveyor\sec.asc .appveyor\sec.asc.gpg
   - cmd: gpg --import .appveyor\sec.asc
 build_script:
