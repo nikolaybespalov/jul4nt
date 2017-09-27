@@ -21,7 +21,7 @@ install:
         New-Item C:\Users\appveyor\.m2 -Type Directory
       }
       Copy-Item .appveyor\settings.xml C:\Users\appveyor\.m2\settings.xml
-  - cmd: gpg --cipher-algo AES256 -d --passphrase "%GPG_PASSPHRASE%" .appveyor\sec.asc.gpg > .appveyor\sec.asc
+  - cmd: gpg --cipher-algo AES256 -d --passphrase "%GPG_PASSPHRASE%" -v -o sec.asc sec.asc.gpg
   - cmd: gpg --import .appveyor\sec.asc
 build_script:
   - mvn clean package --batch-mode -DskipTests
