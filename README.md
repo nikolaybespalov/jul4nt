@@ -18,8 +18,8 @@ The library is available on Maven central. You can start to use the library by a
     <!-- ... -->
     <dependency>
       <groupId>com.github.nikolaybespalov</groupId>
-      <artifactId>windows-event-log-handler</artifactId>
-      <version>${windows-event-log-handler.version}</version>
+      <artifactId>jul4nt</artifactId>
+      <version>${jul4nt.version}</version>
       <scope>runtime</scope>
     </dependency>
     <!-- ... -->
@@ -30,7 +30,7 @@ Or use it in `build.gradle`:
 ```java
   dependencies {
     // ...
-    runtime("com.github.nikolaybespalov:windows-event-log-handler:{windows-event-log-handler.version}")
+    runtime("com.github.nikolaybespalov:jul4nt:{windows-event-log-handler.version}")
     // ...
   }
 ```
@@ -38,33 +38,33 @@ Or use it in `build.gradle`:
 Now you can use the logging configuration file with the following options:
 ```properties
 # 
-handlers = com.github.nikolaybespalov.WindowsEventLogHandler
+handlers = com.github.nikolaybespalov.jul4nt.EventLogHandler
 
 # Specifies the default level for the Handler (defaults to Level.INFO)
-com.github.nikolaybespalov.WindowsEventLogHandler.level = Level.SEVERE
+com.github.nikolaybespalov.jul4nt.EventLogHandler.level = Level.SEVERE
 
 # Specifies the name of a Filter class to use (defaults to no Filter)
-com.github.nikolaybespalov.WindowsEventLogHandler.filter = 
+com.github.nikolaybespalov.jul4nt.EventLogHandler.filter = 
 
 # Specifies the name of a Formatter class to use (defaults to internal implementation)
-com.github.nikolaybespalov.WindowsEventLogHandler.formatter = java.util.logging.SimpleFormatter
+com.github.nikolaybespalov.jul4nt.EventLogHandler.formatter = java.util.logging.SimpleFormatter
 
 # The name of the character set encoding to use (defaults to the default platform encoding)
-com.github.nikolaybespalov.WindowsEventLogHandler.encoding = UTF-8
+com.github.nikolaybespalov.jul4nt.EventLogHandler.encoding = UTF-8
 
 # The name of the Source Name to use (defaults to EventLogHandler)
-com.github.nikolaybespalov.WindowsEventLogHandler.sourceName = My Application
+com.github.nikolaybespalov.jul4nt.EventLogHandler.sourceName = My Application
 
 # Allows automatically create the required registry key (defaults to true)
-com.github.nikolaybespalov.WindowsEventLogHandler.autoCreateRegKey = true
+com.github.nikolaybespalov.jul4nt.EventLogHandler.autoCreateRegKey = true
 
 # Allows automatically delete the required registry key (defaults to false)
-com.github.nikolaybespalov.WindowsEventLogHandler.autoDeleteRegKey = false
+com.github.nikolaybespalov.jul4nt.EventLogHandler.autoDeleteRegKey = false
 ```
 
 Or use the above-described configuration properties as system properties. For example:
 ```properties
--Dcom.github.nikolaybespalov.WindowsEventLogHandler.sourceName="My Application"
+-Dcom.github.nikolaybespalov.jul4nt.EventLogHandler.sourceName="My Application"
 ```
 
 [Java Logging]: https://docs.oracle.com/javase/8/docs/technotes/guides/logging/overview.html "Java Logging"

@@ -17,7 +17,7 @@
 // under the License.
 //
 
-package com.github.nikolaybespalov;
+package com.github.nikolaybespalov.jul4nt;
 
 import com.sun.jna.platform.win32.Advapi32;
 import com.sun.jna.platform.win32.Advapi32Util;
@@ -41,7 +41,7 @@ import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-public class WindowsEventLogHandlerTest {
+public class EventLogHandlerTest {
     private static final String SOURCE_NAME = "My Application";
     private static final String CONFIG_MESSAGE = "config-message-" + UUID.randomUUID();
     private static final String ENTERING_MESSAGE = "ENTRY";
@@ -53,7 +53,7 @@ public class WindowsEventLogHandlerTest {
     private static final String LOG_MESSAGE = "log-message-" + UUID.randomUUID();
     private static final String WARNING_MESSAGE = "warning-message-" + UUID.randomUUID();
     private static final String SEVERE_MESSAGE = "severe-message-" + UUID.randomUUID();
-    private static Logger log = Logger.getLogger(WindowsEventLogHandler.class.getName(), "messages");
+    private static Logger log = Logger.getLogger(EventLogHandler.class.getName(), "messages");
     private HANDLE hEventLog;
 
     @Before
@@ -163,7 +163,7 @@ public class WindowsEventLogHandlerTest {
     public void testRegistry() {
         final String regKey = "SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application\\My Application";
 
-        Handler handler = new WindowsEventLogHandler();
+        Handler handler = new EventLogHandler();
 
         assertNotNull(Advapi32Util.registryGetValue(HKEY_LOCAL_MACHINE, regKey, "ParameterMessageFile"));
 

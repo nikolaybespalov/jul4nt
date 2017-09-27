@@ -17,7 +17,7 @@
 // under the License.
 //
 
-package com.github.nikolaybespalov;
+package com.github.nikolaybespalov.jul4nt;
 
 import com.sun.jna.Memory;
 import com.sun.jna.Native;
@@ -49,29 +49,29 @@ import static java.util.logging.ErrorManager.*;
  * This <tt>Java Util</tt> <tt>Handler</tt> publishes log records to <tt>Windows Event Log</tt>.
  * <p>
  * <b>Configuration:</b>
- * By default each <tt>WindowsEventLogHandler</tt> is initialized using the following
+ * By default each <tt>EventLogHandler</tt> is initialized using the following
  * <tt>LogManager</tt> configuration properties.  If properties are not defined
  * (or have invalid values) then the specified default values are used.
  * <ul>
- * <li>   java.util.logging.ConsoleHandler.level
+ * <li>   com.github.nikolaybespalov.jul4nt.level
  * specifies the default level for the <tt>Handler</tt>
  * (defaults to <tt>Level.INFO</tt>).
- * <li>   java.util.logging.ConsoleHandler.filter
+ * <li>   com.github.nikolaybespalov.jul4nt.filter
  * specifies the name of a <tt>Filter</tt> class to use
  * (defaults to no <tt>Filter</tt>).
- * <li>   com.github.nikolaybespalov.WindowsEventLogHandler.formatter
+ * <li>   com.github.nikolaybespalov.jul4nt.EventLogHandler.formatter
  * specifies the name of a <tt>Formatter</tt> class to use
  * (defaults to the internal implementation which only localizes the message if necessary).
- * <li>   com.github.nikolaybespalov.WindowsEventLogHandler.encoding
+ * <li>   com.github.nikolaybespalov.jul4nt.EventLogHandler.encoding
  * the name of the character set encoding to use (defaults to
  * the default platform encoding).
- * <li>   com.github.nikolaybespalov.WindowsEventLogHandler.sourceName
+ * <li>   com.github.nikolaybespalov.jul4nt.EventLogHandler.sourceName
  * specifies the source name of a <tt>Event Log</tt>
- * (defaults to <tt>"WindowsEventLogHandler"</tt>).
- * <li>   com.github.nikolaybespalov.WindowsEventLogHandler.autoCreateRegKey
+ * (defaults to <tt>"EventLogHandler"</tt>).
+ * <li>   com.github.nikolaybespalov.jul4nt.EventLogHandler.autoCreateRegKey
  * specifies to automatically create the required registry key
  * (defaults to <tt>true</tt>).
- * <li>   com.github.nikolaybespalov.WindowsEventLogHandler.autoDeleteRegKey
+ * <li>   com.github.nikolaybespalov.jul4nt.EventLogHandler.autoDeleteRegKey
  * specifies to automatically delete the required registry key
  * (defaults to <tt>false</tt>).
  * </ul>
@@ -79,12 +79,12 @@ import static java.util.logging.ErrorManager.*;
  * @author <a href="mailto:nikolaybespalov@gmail.com">Nikolay Bespalov</a>
  */
 
-public class WindowsEventLogHandler extends Handler implements AutoCloseable {
-    private static final String SOURCE_NAME = "WindowsEventLogHandler";
-    private static final String EVENT_MESSAGE_FILE = "windows-event-log-handler";
+public class EventLogHandler extends Handler implements AutoCloseable {
+    private static final String SOURCE_NAME = "jul4nt";
+    private static final String EVENT_MESSAGE_FILE = "jul4nt";
     private static final String EVENT_LOG_REG_KEY = "SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application";
     private static final String PARAMETER_MESSAGE_FILE_REG_VALUE_NAME = "ParameterMessageFile";
-    private static final String CLASS_NAME = "com.github.nikolaybespalov.WindowsEventLogHandler";
+    private static final String CLASS_NAME = "com.github.nikolaybespalov.jul4nt.EventLogHandler";
 
     private static final int MESSAGE_ID_SUCCESS = 0x1001;
     private static final int MESSAGE_ID_INFO = 0x40001002;
@@ -130,7 +130,7 @@ public class WindowsEventLogHandler extends Handler implements AutoCloseable {
         }
     }
 
-    public WindowsEventLogHandler() {
+    public EventLogHandler() {
         if (!Platform.isWindows()) {
             return;
         }
