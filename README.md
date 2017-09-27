@@ -1,4 +1,4 @@
-# Windows Event Log Handler
+# jul4nt
 
 [Java Logging] [Handler] which publishes log records to [Windows Event Log]
 
