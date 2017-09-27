@@ -5,6 +5,8 @@
 
 [![AppVeyor Badge](https://ci.appveyor.com/api/projects/status/github/nikolaybespalov/windows-event-log-handler?svg=true)](https://ci.appveyor.com/project/nikolaybespalov/windows-event-log-handler)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a4bb3b313a14dcd931c9b7532252baa)](https://www.codacy.com/app/nikolaybespalov/windows-event-log-handler)
+[![Maven Central Badge](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/windows-event-log-handler/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/windows-event-log-handler)
+
 
 ## How to use?
 
@@ -26,7 +28,7 @@ Or use it in `build.gradle`:
 ```java
   dependencies {
     // ...
-    runtime("com.github.nikolaybespalov:WindowsEventLogHandler:{windows-event-log-handler.version}")
+    runtime("com.github.nikolaybespalov:windows-event-log-handler:{windows-event-log-handler.version}")
     // ...
   }
 ```
