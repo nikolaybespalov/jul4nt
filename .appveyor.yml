@@ -23,7 +23,7 @@ build_script:
 test_script:
   - mvn clean test --batch-mode -Djna.nosys=true
 deploy_script:
-  - mvn clean deploy --batch-mode -DskipTests
+  - mvn clean deploy --batch-mode -DskipTests -DskipNexusStagingDeployMojo=false
 cache:
   - C:\maven\
   - C:\Users\appveyor\.m2
