@@ -1,11 +1,13 @@
 # Windows Event Log Handler
+
 [Java Logging] [Handler] which publishes log records to [Windows Event Log]
 
 ![Windows Event Viewer](https://upload.wikimedia.org/wikipedia/en/f/f2/Windows_XP_Event_Viewer.png)
 
-[![AppVeyor Badge](https://ci.appveyor.com/api/projects/status/github/nikolaybespalov/windows-event-log-handler?svg=true)](https://ci.appveyor.com/project/nikolaybespalov/windows-event-log-handler)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a4bb3b313a14dcd931c9b7532252baa)](https://www.codacy.com/app/nikolaybespalov/windows-event-log-handler)
-[![Maven Central Badge](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/windows-event-log-handler/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/windows-event-log-handler)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/windows-event-log-handler/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/windows-event-log-handler)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/nikolaybespalov/windows-event-log-handler?svg=true)](https://ci.appveyor.com/project/nikolaybespalov/windows-event-log-handler)
+[![Codacy](https://api.codacy.com/project/badge/Grade/5a4bb3b313a14dcd931c9b7532252baa)](https://www.codacy.com/app/nikolaybespalov/windows-event-log-handler)
+[![Codacy coverage](https://img.shields.io/codacy/coverage/85097ba49291416b9a0da2881c242b9e.svg)](https://www.codacy.com/app/nikolaybespalov/windows-event-log-handler)
 
 
 ## How to use?
