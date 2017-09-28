@@ -67,6 +67,9 @@ Or use the above-described configuration properties as system properties. For ex
 -Dcom.github.nikolaybespalov.jul4nt.EventLogHandler.sourceName="My Application"
 ```
 
+## Example
+An [example](https://github.com/nikolaybespalov/jul4nt-example) of using the jul4nt
+
 [Java Logging]: https://docs.oracle.com/javase/8/docs/technotes/guides/logging/overview.html "Java Logging"
 [Handler]: https://docs.oracle.com/javase/8/docs/api/java/util/logging/Handler.html "Handler"
 [Windows Event Log]: https://msdn.microsoft.com/ru-ru/library/windows/desktop/aa385780(v=vs.85).aspx "Windows Event Log"
