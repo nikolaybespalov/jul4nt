@@ -2,7 +2,7 @@
 
 [Java Logging] [Handler] which publishes log records to [Windows Event Log]
 
-![Windows Event Viewer](https://upload.wikimedia.org/wikipedia/en/f/f2/Windows_XP_Event_Viewer.png)
+![Windows Event Viewer](http://www.reviversoft.com/blog/wp-content/uploads/2013/12/Windows_XP_Event_Viewer.png)
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/jul4nt/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/jul4nt)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/nikolaybespalov/jul4nt?svg=true)](https://ci.appveyor.com/project/nikolaybespalov/jul4nt)
