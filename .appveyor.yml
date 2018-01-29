@@ -8,12 +8,12 @@ install:
       Add-Type -AssemblyName System.IO.Compression.FileSystem
       if (!(Test-Path -Path "C:\maven" )) {
         (new-object System.Net.WebClient).DownloadFile(
-          'http://www.us.apache.org/dist/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.zip',
+          'http://apache-mirror.rbc.ru/pub/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.zip',
           'C:\maven-bin.zip'
         )
         [System.IO.Compression.ZipFile]::ExtractToDirectory("C:\maven-bin.zip", "C:\maven")
       }
-  - cmd: SET M3_HOME=C:\maven\apache-maven-3.5.0
+  - cmd: SET M3_HOME=C:\maven\apache-maven-3.5.2
   - cmd: SET M3=%M3_HOME%\bin
   - cmd: SET PATH=%M3%;%JAVA_HOME%\bin;%PATH%
   - ps: |
