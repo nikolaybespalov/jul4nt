@@ -7,7 +7,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/jul4nt/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nikolaybespalov/jul4nt)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/nikolaybespalov/jul4nt?svg=true)](https://ci.appveyor.com/project/nikolaybespalov/jul4nt)
 [![Codacy](https://api.codacy.com/project/badge/Grade/5a4bb3b313a14dcd931c9b7532252baa)](https://www.codacy.com/app/nikolaybespalov/jul4nt)
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/5a4bb3b313a14dcd931c9b7532252baa)](https://www.codacy.com/app/nikolaybespalov/jul4nt?utm_source=github.com&utm_medium=referral&utm_content=nikolaybespalov/jul4nt&utm_campaign=Badge_Coverage)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/5a4bb3b313a14dcd931c9b7532252baa)](https://www.codacy.com/app/nikolaybespalov/jul4nt)
 
 
 ## How to use?
